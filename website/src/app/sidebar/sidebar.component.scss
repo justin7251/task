@@ -1,0 +1,22 @@
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 150px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    a {
+        display: block;
+        color: black;
+        padding: 16px;
+        text-decoration: none;
+    }
+    .active {
+        background-color: #4CAF50;
+        color: white;
+    }
+  }
+
+

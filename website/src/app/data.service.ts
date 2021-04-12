@@ -31,9 +31,8 @@ export class DataService {
     return this.http.get('http://localhost:8080/users?page=' + this.page  + '&size=' + this.pageSize);
   }
 
-  addUser() {
-    return this.http.post('http://localhost:8080/users', {}).subscribe(data => {
-      // this.postId = data.id;
+  addUser(data: {}) {
+    return this.http.post('http://localhost:8080/users', data).subscribe(data => {
     });
   }
 

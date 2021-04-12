@@ -1,29 +1,33 @@
-<h3>Users</h3>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Gender</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let user of users ">
-            <th scope="row">{{ user['firstName'] }}</th>
-            <th scope="row">{{ user['lastName'] }}</th>
-            <th scope="row">{{ user['gender'] }}</th>
-        </tr>
-    </tbody>
-</table>
+<div class="content">
+    <h3>Users</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users ">
+                <th scope="row">{{ user['firstName'] }}</th>
+                <th scope="row">{{ user['lastName'] }}</th>
+                <th scope="row">{{ user['gender'] }}</th>
+                <th scope="row"><button class="btn btn-outline-secondary btn-sm" (click)="delete(user['id'])">Delete</button></th>
+            </tr>
+        </tbody>
+    </table>
 
- <div class="d-flex justify-content-between p-2">
-    <ngb-pagination
-      [collectionSize]="(total)!" [(page)]="data.page" [pageSize]="data.pageSize" (pageChange)="refreshPage()">
-    </ngb-pagination>
+    <div class="d-flex justify-content-between p-2">
+        <ngb-pagination
+        [collectionSize]="(total)!" [(page)]="data.page" [pageSize]="data.pageSize" (pageChange)="refreshPage()">
+        </ngb-pagination>
 
-    <select class="custom-select" style="width: auto" [(ngModel)]="data.pageSize" (ngModelChange)="refreshPage()">
-        <option [ngValue]="10">10</option>
-        <option [ngValue]="15">15</option>
-        <option [ngValue]="20">20</option>
-    </select>
+        <select class="custom-select" style="width: auto" [(ngModel)]="data.pageSize" (ngModelChange)="refreshPage()">
+            <option [ngValue]="10">10</option>
+            <option [ngValue]="15">15</option>
+            <option [ngValue]="20">20</option>
+        </select>
+    </div>
   </div>

@@ -1,6 +1,5 @@
 import {Component, QueryList, ViewChildren, OnInit} from '@angular/core';
 import { DataService } from '../data.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -25,5 +24,10 @@ export class UsersComponent implements OnInit {
       this.users = response.items;
       this.total = response.total;
     });
+  }
+
+  delete (user_id: number) {
+    this.data.deleteUsers(user_id);
+    window.location.reload();
   }
 }
