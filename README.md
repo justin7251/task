@@ -16,6 +16,7 @@ Steps to follow
         npm start
 
 3. Run the website:
+
         cd ./website
         npm i
         ng serve --open
