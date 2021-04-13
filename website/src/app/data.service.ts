@@ -32,7 +32,9 @@ export class DataService {
   }
 
   addUser(data: {}) {
-    return this.http.post('http://localhost:8080/users', data).subscribe(data => {
+    // after posting to the server its close connection
+    return this.http.post('http://localhost:8080/users', {}).subscribe(data => {
+      console.log(data);
     });
   }
 

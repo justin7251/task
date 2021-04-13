@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from '../data.service';
 
 @Component({
@@ -12,8 +13,9 @@ import { DataService } from '../data.service';
 export class AddUserComponent implements OnInit {
   model!: NgbDateStruct;
   userForm!: FormGroup;
+  submitted = false;
 
-  constructor(private fb: FormBuilder, public data: DataService) {}
+  constructor(private fb: FormBuilder, public data: DataService, private router: Router, private route: ActivatedRoute) {}
   ngOnInit(): void {
     this.createForm();
   }
@@ -28,9 +30,22 @@ export class AddUserComponent implements OnInit {
       created: ''
 		});
 	}
+  /* Get errors */
+  public handleError = (controlName: string, errorName: string) => {
+    return this.userForm.controls[controlName].hasError(errorName);
+  }
+  private dateToString = (date: { year: any; month: any; day: any; }) => `${date.year}-${date.month}-${date.day}`; 
 
   onSubmit(value:any) {
-    value.birthDate = '';
-    this.data.addUser(value);
+    this.router.navigate(['/users']);
+    this.submitted = true;
+    if (value.birthDate) {
+      value.birthDate = this.dateToString(value.birthDate);
+    }
+    var today = new Date();
+    value.created = today.toISOString().substring(0, 10);
+    if (this.userForm.valid) {
+      this.data.addUser(value);
+    }
   }
 }
