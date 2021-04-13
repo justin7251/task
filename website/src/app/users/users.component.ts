@@ -26,8 +26,8 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  delete (user_id: number) {
-    this.data.deleteUsers(user_id);
+  delete(userId: number) {
+    this.data.deleteUsers(userId);
     window.location.reload();
   }
 }

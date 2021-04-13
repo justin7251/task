@@ -21,28 +21,29 @@ export class AddUserComponent implements OnInit {
   }
 
   createForm() {
-		this.userForm = this.fb.group({
+    this.userForm = this.fb.group({
       id: '',
       birthDate: '',
       firstName: ['', Validators.required ],
       lastName: ['', Validators.required ],
       gender: ['', Validators.required ],
       created: ''
-		});
-	}
+    });
+  }
   /* Get errors */
   public handleError = (controlName: string, errorName: string) => {
     return this.userForm.controls[controlName].hasError(errorName);
   }
-  private dateToString = (date: { year: any; month: any; day: any; }) => `${date.year}-${date.month}-${date.day}`; 
 
-  onSubmit(value:any) {
+  private dateToString = (date: { year: any; month: any; day: any; }) => `${date.year}-${date.month}-${date.day}`;
+
+  onSubmit(value: any) {
     this.router.navigate(['/users']);
     this.submitted = true;
     if (value.birthDate) {
       value.birthDate = this.dateToString(value.birthDate);
     }
-    var today = new Date();
+    const today = new Date();
     value.created = today.toISOString().substring(0, 10);
     if (this.userForm.valid) {
       this.data.addUser(value);

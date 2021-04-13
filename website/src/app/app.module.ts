@@ -15,8 +15,7 @@ import { AddUserComponent } from './add-user/add-user.component';
     AppComponent,
     UsersComponent,
     SidebarComponent,
-    AddUserComponent,
-    
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +29,5 @@ import { AddUserComponent } from './add-user/add-user.component';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  ngOnInit() {
-  }
   public isCollapsed = false;
 }
